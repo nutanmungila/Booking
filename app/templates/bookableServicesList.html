@@ -1,10 +1,11 @@
 <div class="row">
   <div class="row">
+    <div class="test"> TEST EG </div>
     <div class="col-md-2"><h4>Name</h4></div>
     <div class="col-md-1"><h4>Price</h4></div>
     <div class="col-md-7"><h4>Description</h4></div>
   </div>
-  <div class="row" ng-repeat="service in bookingState.services track by $index">
+  <div class="row service" ng-repeat="service in bookingState.services track by $index">
     <div class="col-md-2">{{service.name}}</div>
     <div class="col-md-1">{{service.price}}</div>
     <div class="col-md-7">{{service.description}}</div>
