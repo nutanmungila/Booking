@@ -1,15 +1,14 @@
 <div class="row">
-  <div class="row">
-    <div class="test"> TEST EG </div>
-    <div class="col-md-2"><h4>Name</h4></div>
-    <div class="col-md-1"><h4>Price</h4></div>
-    <div class="col-md-7"><h4>Description</h4></div>
+  <div class="row hidden-xs">
+    <div class="col-sm-2 col-lg-2"><h4>Name</h4></div>
+    <div class="col-sm-2 col-lg-2"><h4>Price</h4></div>
+    <div class="col-sm-6 col-lg-6"><h4>Description</h4></div>
   </div>
   <div class="row service" ng-repeat="service in bookingState.services track by $index">
-    <div class="col-md-2">{{service.name}}</div>
-    <div class="col-md-1">{{service.price}}</div>
-    <div class="col-md-7">{{service.description}}</div>
-    <div class="col-md-2">
+    <div class="col-xs-12 col-sm-2 col-lg-2">{{service.name}}</div>
+    <div class="col-xs-12 col-sm-2 col-lg-2">{{service.price}}</div>
+    <div class="hidden-xs col-sm-6 col-lg-6">{{service.description}}</div>
+    <div class="col-sm-2 col-xs-12 col-lg-2">
       <button class="btn btn-primary">Buy</button>
     </div>
   </div>

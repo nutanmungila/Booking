@@ -5,7 +5,8 @@ app.directive("bookableServicesList", function() {
       restrict: 'E',
       scope: {},
       templateUrl: "templates/bookableServicesList.html",
-      controller: 'bookableController'
+      controller: 'bookableController',
+      replace: true
     };
 });
 
