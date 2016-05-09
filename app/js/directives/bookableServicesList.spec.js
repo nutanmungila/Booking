@@ -1,4 +1,4 @@
-describe('Unit testing great quotes', function() {
+describe('Bookable Services List Component', function() {
   var $compile,
     $rootScope,
     httpBackend;
@@ -30,6 +30,7 @@ describe('Unit testing great quotes', function() {
     };
   // Load the myApp module, which contains the directive
   beforeEach(module('booking'));
+  beforeEach(module('templates'));
 
   // Store references to $rootScope and $compile
   // so they are available to all tests in this describe block
@@ -38,30 +39,11 @@ describe('Unit testing great quotes', function() {
     $compile = _$compile_;
     $rootScope = _$rootScope_;
     httpBackend = $injector.get('$httpBackend');
-    templateCache = $injector.get('$templateCache');
-    templateCache
-      .put('templates/bookableServicesList.html', `
-        <div class="row">
-          <div class="row">
-            <div class="test"> TEST EG </div>
-            <div class="col-md-2"><h4>Name</h4></div>
-            <div class="col-md-1"><h4>Price</h4></div>
-            <div class="col-md-7"><h4>Description</h4></div>
-          </div>
-          <div class="row service" ng-repeat="service in bookingState.services track by $index">
-            <div class="col-md-2">{{service.name}}</div>
-            <div class="col-md-1">{{service.price}}</div>
-            <div class="col-md-7">{{service.description}}</div>
-            <div class="col-md-2">
-              <button class="btn btn-primary">Buy</button>
-            </div>
-          </div>
-        </div>`);
   }));
 
-  it('Replaces the element with the appropriate content', function() {
+  it('renders n rows if endpoint returns n services', function() {
     httpBackend
-      .expectGET('https://uk.bookingbug.com/api/v1/41285/services')
+      .whenGET('https://uk.bookingbug.com/api/v1/41285/services')
       .respond(response);
     // Compile a piece of HTML containing the directive
     var element = $compile("<bookable-services-list></bookable-services-list>")($rootScope);

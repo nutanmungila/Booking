@@ -25,8 +25,9 @@ app.factory("bookableService", [
         };
 
         return $http(req)
-          .success(function(data) {
+          .then(function(response) {
             var services = [];
+            var data = response.data;
             if (data && data._embedded && data._embedded.services) {
               services = data._embedded.services.map(function(service) {
                 return {
@@ -36,10 +37,7 @@ app.factory("bookableService", [
                 };
               });
             }
-            bookableService.state.services = services;
-          })
-          .error(function() {
-            //handle error case
+            return services;
           });
       }
     };

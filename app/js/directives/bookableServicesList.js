@@ -1,21 +1,20 @@
 var app = angular.module("booking");
 
-app.directive("bookableServicesList", function() {
-    return {
-      restrict: 'E',
-      scope: {},
+app.component("bookableServicesList", {
       templateUrl: "templates/bookableServicesList.html",
-      controller: 'bookableController',
-      replace: true
-    };
+      controller: 'bookableController'
 });
 
 app.controller('bookableController',[
   "$scope",
   "bookableService",
   function($scope,bookableService) {
-    $scope.bookingState = bookableService.state;
+    $scope.bookingState = {
+      services: []
+    };
     var COMPANY_ID = 41285;
-    bookableService.getServices(COMPANY_ID);
+    bookableService.getServices(COMPANY_ID).then(function(services) {
+      $scope.bookingState.services = services;
+    })
   }
 ]);
