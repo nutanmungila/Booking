@@ -17,7 +17,7 @@ module.exports = function (config) {
         files: [
             'node_modules/angular/angular.min.js',
             'node_modules/angular-mocks/angular-mocks.js',
-            // 'app/**/*.html',
+            'app/templates/**/*.html',
             'app/**/*.spec.js',
             'app/**/*.js'
         ],
@@ -28,6 +28,12 @@ module.exports = function (config) {
         // preprocess matching files before serving them to the browser
         // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
         preprocessors: {
+          'app/templates/**/*.html': 'ng-html2js'
+        },
+        ngHtml2JsPreprocessor: {
+        // you might need to strip the main directory prefix in the URL request
+          stripPrefix: 'app/',
+          moduleName: 'templates'
         },
 
 
