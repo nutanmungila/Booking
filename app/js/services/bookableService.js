@@ -13,10 +13,7 @@ app.factory("bookableService", [
   "apiHeader",
   function($http, apiUrl, apiHeader) {
     var bookableService = {
-      state: {
-        services: []
-      },
-
+      
       getServices: function getServices(id) {
         var req = {
           method: 'GET',
